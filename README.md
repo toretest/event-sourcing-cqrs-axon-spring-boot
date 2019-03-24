@@ -9,8 +9,16 @@ http://progressivecoder.com/2019/01/implementing-event-sourcing-using-axon-and-s
 http://localhost:8080/swagger-ui.html
 
 http://localhost:8080/h2-console
+http://event-sourcing-cqrs-axon-spring-boot-myproject.192.168.99.104.nip.io/swagger-ui.html
 --------
 openshift
+IP Address:  192.168.99.104/24
+oc login https://192.168.99.10:8443
+https://www.baeldung.com/spring-boot-deploy-openshift
+
+Minishift
+
+
 https://192.168.99.102:8443/console/catalog
 --------
 mongodn

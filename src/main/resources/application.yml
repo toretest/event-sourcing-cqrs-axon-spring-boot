@@ -4,3 +4,17 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  application:
+    name: event-sourcing-cqrs-axon-spring-boot
+    thymeleaf:
+      cache: false
+      enabled: true
+      prefix: classpath:/templates/
+      suffix: .html
+
+server:
+ # port: =${port:8080}
+  error:
+    path: /error
+    whitelabel:
+      enabled: false

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: event-sourcing-cqrs-axon-spring-boot
+data:
+  application.properties: |-
+    mittnavn=toregard
