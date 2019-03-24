@@ -23,3 +23,15 @@ The following service(s) have been created in your project: mongodb.
  Connection URL: mongodb://toregard:toregard@mongodb/toregarddb
 
 For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mongodb-container/blob/master/3.2/README.md .
+
+
+---------------
+minishift addons install --defaults
+minishift addons enable admin-user
+
+---------
+https://spring.io/guides/gs/spring-boot-docker/
+
+-------
+mvnw install dockerfile:build
+mvnw dockerfile:push
