@@ -5,7 +5,7 @@
 
 	<groupId>com.progressivecoder.es</groupId>
 	<artifactId>event-sourcing-cqrs-axon-spring-boot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>event-sourcing-cqrs-axon-spring-boot</name>
 	<description>Sample Project for Event Sourcing and CQRS Using Spring Boot and Axon</description>
 

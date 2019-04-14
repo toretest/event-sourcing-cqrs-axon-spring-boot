@@ -1,5 +1,7 @@
 
 ## Innledning
+oc start-build event-sourcing-cqrs-axon-spring-boot-s2i -n myproject
+
 
 
 Implementing Event Sourcing using Axon and Spring Boot

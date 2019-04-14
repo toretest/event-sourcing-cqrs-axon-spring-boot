@@ -1,0 +1,31 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: event
+  name: event-sourcing-cqrs-axon-spring-boot-s2i
+  namespace: myproject
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: {}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'event-sourcing-cqrs-axon-spring-boot:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    binary: {}
+    type: Binary
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: 'fabric8/s2i-java:latest'
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers: []
+
+
+
