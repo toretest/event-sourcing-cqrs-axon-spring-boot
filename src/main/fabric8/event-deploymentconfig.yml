@@ -1,0 +1,82 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: event
+    provider: fabric8
+    version: "latest"
+    group: no.techpro.exmicro
+  name: eventdeploy
+spec:
+  replicas: 3
+  selector:
+    app: event
+    provider: fabric8
+    group: no.techpro.exmicro
+  strategy:
+    rollingParams:
+      timeoutSeconds: 3600
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: event
+        provider: fabric8
+        version: "latest"
+        group: no.techpro.exmicro
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NAME
+          value: Tore Gard openshift
+        - name: NOKKEL
+          valueFrom:
+            configMapKeyRef:
+              name: my-config-map
+              key: NOKKEL
+        image: openshift/event-sourcing-cqrs-axon-spring-boot
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 180
+          successThreshold: 1
+        name: spring-boot
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9779
+          name: prometheus
+          protocol: TCP
+        - containerPort: 8778
+          name: jolokia
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          successThreshold: 1
+        securityContext:
+          privileged: false
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+        - spring-boot
+      from:
+        kind: ImageStreamTag
+        name: 'event-sourcing-cqrs-axon-spring-boot:latest'
+

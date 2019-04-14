@@ -21,6 +21,11 @@ public class AccountQueryController {
         this.accountQueryService = accountQueryService;
     }
 
+    @GetMapping("/{ping}")
+    public String ping(){
+        return "AccountQueryController live";
+    }
+
     @GetMapping("/{accountNumber}")
     public AccountQueryEntity getAccount(@PathVariable(value = "accountNumber") String accountNumber){
         return accountQueryService.getAccount(accountNumber);

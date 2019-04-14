@@ -4,6 +4,8 @@
 
 Implementing Event Sourcing using Axon and Spring Boot
 
+http://progressivecoder.com/2019/02/event-sourcing-and-cqrs-with-axon-and-spring-boot-part-2/
+
 http://progressivecoder.com/2019/01/implementing-event-sourcing-using-axon-and-spring-boot-part-1/
 
 http://localhost:8080/swagger-ui.html
