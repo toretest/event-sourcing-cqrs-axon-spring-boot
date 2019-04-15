@@ -2,7 +2,16 @@
 ## Innledning
 oc start-build event-sourcing-cqrs-axon-spring-boot-s2i -n myproject
 
-
+### odo
+https://github.com/openshift/odo/blob/master/docs/getting-started.md
+* odo login -u developer -p developer
+* odo app create nodeapp
+* git clone https://github.com/openshift/nodejs-ex
+* cd nodejs-ex
+* odo create nodejs
+* odo push
+* odo url create --open
+*
 
 Implementing Event Sourcing using Axon and Spring Boot
 
@@ -44,6 +53,23 @@ minishift addons enable admin-user
 ---------
 https://spring.io/guides/gs/spring-boot-docker/
 
+https://blog.openshift.com/part-2-creating-a-template-a-technical-walkthrough/
+
 -------
 mvnw install dockerfile:build
 mvnw dockerfile:push
+
+## post
+post
+
+http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts
+
+Content-Type : application/json
+
+{
+  "currency": "string",
+  "startingBalance": 0
+}
+
+
+curl -X POST "http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"currency\": \"string\", \"startingBalance\": 0}"

@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.progressivecoder.es</groupId>
-	<artifactId>event-sourcing-cqrs-axon-spring-boot</artifactId>
-	<version>0.1</version>
-	<name>event-sourcing-cqrs-axon-spring-boot</name>
+	<artifactId>eventsourcing</artifactId>
+	<version>0.3</version>
+	<name>name-eventsourcing</name>
 	<description>Sample Project for Event Sourcing and CQRS Using Spring Boot and Axon</description>
 
 	<parent>
@@ -75,6 +75,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>eventsourcing-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
