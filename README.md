@@ -2,16 +2,76 @@
 ## Innledning
 oc start-build event-sourcing-cqrs-axon-spring-boot-s2i -n myproject
 
+## post
+post
+
+http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts
+
+Content-Type : application/json
+```
+{
+  "currency": "string",
+  "startingBalance": 0
+}
+```
+
+```
+curl -X POST "http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"currency\": \"string\", \"startingBalance\": 0}"
+```
+
 ### odo
-https://github.com/openshift/odo/blob/master/docs/getting-started.md
+* https://github.com/openshift/odo/blob/master/docs/getting-started.md
+* https://openshiftdo.org/getting-started/#1-running-openshift
+
+
 * odo login -u developer -p developer
-* odo app create nodeapp
-* git clone https://github.com/openshift/nodejs-ex
-* cd nodejs-ex
-* odo create nodejs
+* odo app create eventapp
+* git clone <https://github.com/openshift/nodejs-ex>
+* cd <nodejs-ex>
+* odo create openjdk18 ( image version )
 * odo push
+* odo url create
 * odo url create --open
-*
+
+* OPENJDK18 odo virker
+```
+oc import-image my-redhat-openjdk-18/openjdk18-openshift --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm
+```
+Fra <https://github.com/openshift/odo/issues/500> 
+
+* OPENJDK18-OPENSHIFT
+
+OPENJDK18-OPENSHIFT
+
+Fra <https://github.com/openshift/odo/issues/500> 
+```
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: openjdk18
+  namespace: openshift
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - annotations:
+        description: >-
+          Build and run Java Microservices such as Spring Noot
+        iconClass: icon-spring
+        openshift.io/display-name: OpenJDK 1.8 (Latest)
+        openshift.io/provider-display-name: 'Red Hat, Inc.'
+        tags: 'builder,java,spring-boot'
+      from:
+        kind: DockerImage
+        name: registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
+      generation: 1
+      importPolicy: {}
+      name: latest
+      referencePolicy:
+        type: Source
+```
+
+
 
 Implementing Event Sourcing using Axon and Spring Boot
 
@@ -59,17 +119,3 @@ https://blog.openshift.com/part-2-creating-a-template-a-technical-walkthrough/
 mvnw install dockerfile:build
 mvnw dockerfile:push
 
-## post
-post
-
-http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts
-
-Content-Type : application/json
-
-{
-  "currency": "string",
-  "startingBalance": 0
-}
-
-
-curl -X POST "http://eventsourcing-myproject.192.168.99.101.nip.io/bank-accounts" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"currency\": \"string\", \"startingBalance\": 0}"

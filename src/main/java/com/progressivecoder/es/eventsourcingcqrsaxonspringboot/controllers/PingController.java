@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PingController {
     @GetMapping("ping")
     public String ping(){
-        return "ping v 0.3";
+        return "ping v 0.5";
     }
 }

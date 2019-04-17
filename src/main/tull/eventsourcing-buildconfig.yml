@@ -1,31 +1,22 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
+  name: eventsourcing-buildcconfig-s2i
   labels:
-    app: event
-  name: eventsourcing
+    app: eventsourcing
   namespace: myproject
 spec:
-  failedBuildsHistoryLimit: 5
-  nodeSelector: {}
   output:
     to:
       kind: ImageStreamTag
-      name: 'eventsourcing:latest'
-  postCommit: {}
-  resources: {}
+      name: 'eventsourcing:0.3'
   runPolicy: Serial
   source:
-    binary: {}
     type: Binary
-    strategy:
-      sourceStrategy:
-        from:
-          kind: DockerImage
-          name: 'fabric8/s2i-java:latest'
-      type: Source
-    successfulBuildsHistoryLimit: 5
-    triggers: []
-
-
-
+  strategy:
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: 'fabric8/s2i-java:2.3'
+    type: Source
+  successfulBuildsHistoryLimit: 5

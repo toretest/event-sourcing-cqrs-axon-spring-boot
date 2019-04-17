@@ -6,7 +6,7 @@
 	<groupId>com.progressivecoder.es</groupId>
 	<artifactId>eventsourcing</artifactId>
 	<version>0.3</version>
-	<name>name-eventsourcing</name>
+	<name> eventsourcing</name>
 	<description>Sample Project for Event Sourcing and CQRS Using Spring Boot and Axon</description>
 
 	<parent>
